@@ -31,7 +31,7 @@ Detailed Descriptions:
 					Includes the Ability to Just Download and Create Batch File for Later Processing of Repositories
 					Or You Download, Create Batch File, and Download all Repositories
 
-Functions:			GetHub_Repo_Builder()
+ Functions:			GetHub_Repo_Builder()
 					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to download them and excute this batch file
 									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
 									on the functions that are ran within the GUI please see next section below for details.
