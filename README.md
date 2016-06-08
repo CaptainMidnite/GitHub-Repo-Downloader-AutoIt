@@ -34,7 +34,8 @@ Detailed Descriptions:
  Functions:				
  					
  					GetHub_Repo_Builder()
-					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to 	download them and excute this batch file if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
+					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to 	download them and excute this batch file
+									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
 									on the functions that are ran within the GUI please see next section below for details.
 					$Web Address:			Main web address of user (i.e. https://github.com/google)
 					$Project Name:			Name of project to be created will also use as part of directory name (i.e. Google_GitHub_Source)
