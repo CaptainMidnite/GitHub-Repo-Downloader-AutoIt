@@ -31,7 +31,16 @@ Detailed Descriptions:
 					Includes the Ability to Just Download and Create Batch File for Later Processing of Repositories
 					Or You Download, Create Batch File, and Download all Repositories
 
-===========================================================================================================================================================
+Functions:			GetHub_Repo_Builder()
+					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to download them and excute this batch file
+									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
+									on the functions that are ran within the GUI please see next section below for details.
+					Web Address			=	Main web address of user (i.e. https://github.com/google)
+					Project Name		=	Name of project to be created will also use as part of directory name (i.e. Google_GitHub_Source)
+					Destination			=	Destination Directory where the project will be stored (i.e. C:\Users)
+					Build Only			=	Will only create the Project Directory and the inital batch file to download the repos for user to run later
+					Build and Execute	=	Will do the same as Build And will Start Running the Batch File after build is complete	
+==========================================================================================================================================================
  Script Function:	GitHubRepos - V2.0
 
  File Name:			GitHubRepos.au3
@@ -42,20 +51,20 @@ Detailed Descriptions:
 
  Functions:			GitSrcRepos($ghAddress, $dstDir)
 					Description: 	Downloads a complete list of a members repository set as a text file and saves it as SourceList.txt
-					$ghAddress	=	GitHub Address - Ex: https://github.com/google
-					$dstDir		=	Destination Directory for Source List - Ex: @ScriptDir
+					$ghAddress			=	GitHub Address - Ex: https://github.com/google
+					$dstDir				=	Destination Directory for Source List - Ex: @ScriptDir
 
 					WriteBatch($prjName, $dstDir)
 					Description:	Creates a windows batch file "GitHub_Make_%Project Name%.bat" to process SourceList.txt. Running this batch file will
 									download all repos from SourceList.txt and create an additonal batch file "GitUpdate_%Project Name%.bat" to use to
 									update all of the downloaded repos. If function is used in a variable then the function will return the path to the
 									batch file "GitHub_Make_%Project Name%.bat".
-					$prjName	=	Project Name - Ex: Google_Github
-					$dstDir		=	Destination Directory for "GitHub_Make_%Project Name%.bat"
+					$prjName			=	Project Name - Ex: Google_Github
+					$dstDir				=	Destination Directory for "GitHub_Make_%Project Name%.bat"
 
 					ReplaceRsrvd($inString)
 					Description:	Used to Remove/Replace any reserved characters in the input string that may conflict with windows directory namespace
 									or have conflicts within the batch files.
-					$inString	=	Input String - Ex: Google_GitHub
+					$inString			=	Input String - Ex: Google_GitHub
 					Example:		ReplaceRsrvd("Google* GitHub") = Returns: Google_GitHub
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
