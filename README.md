@@ -31,9 +31,10 @@ Detailed Descriptions:
 					Includes the Ability to Just Download and Create Batch File for Later Processing of Repositories
 					Or You Download, Create Batch File, and Download all Repositories
 
- Functions:			GetHub_Repo_Builder()
-					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to download them and excute this batch file
-									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
+ Functions:				
+ 					
+ 					GetHub_Repo_Builder()
+					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to 	download them and excute this batch file if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
 									on the functions that are ran within the GUI please see next section below for details.
 					$Web Address:			Main web address of user (i.e. https://github.com/google)
 					$Project Name:			Name of project to be created will also use as part of directory name (i.e. Google_GitHub_Source)
@@ -50,7 +51,8 @@ Detailed Descriptions:
 
  Description:		AutoIt Functions to Download a Members Complete Repository Set.
 
- Functions:			
+ Functions:
+ 
 					GitSrcRepos($ghAddress, $dstDir)
 					Description: 	Downloads a complete list of a members repository set as a text file and saves it as SourceList.txt
 					$ghAddress			=	GitHub Address - Ex: https://github.com/google
