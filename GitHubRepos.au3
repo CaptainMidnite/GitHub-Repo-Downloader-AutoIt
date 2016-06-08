@@ -1,7 +1,7 @@
 #cs ------------------------------------------------------------------------------------------------------------------------------------------------------
 
  AutoIt Version: 3.3.15.0 (Beta)
- Author:         Captain Midnite
+ Author:         CaptainMidnite
 
  Script Function:	GitHubRepos - V2.0
 

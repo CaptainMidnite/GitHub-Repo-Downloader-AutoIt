@@ -1,7 +1,7 @@
 #cs ------------------------------------------------------------------------------------------------------------------------------------------------------
 
  AutoIt Version: 3.3.15.0 (Beta)
- Author:         Captain Midnite
+ Author:         CaptainMidnite
 
  Script Function:	GUI GitHub_Repo_Builder - v2.0
 

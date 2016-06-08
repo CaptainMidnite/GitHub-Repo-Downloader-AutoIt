@@ -17,7 +17,7 @@ their repos. If you want to test just the portion for building the batch file th
 
 If you have any suggested changes or requests to add any additonal functionality feel free to send me a message on github.
 
--Captain Midnite
+-CaptainMidnite
 
 Detailed Descriptions:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
