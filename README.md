@@ -50,7 +50,8 @@ Detailed Descriptions:
 
  Description:		AutoIt Functions to Download a Members Complete Repository Set.
 
- Functions:			GitSrcRepos($ghAddress, $dstDir)
+ Functions:			
+					GitSrcRepos($ghAddress, $dstDir)
 					Description: 	Downloads a complete list of a members repository set as a text file and saves it as SourceList.txt
 					$ghAddress			=	GitHub Address - Ex: https://github.com/google
 					$dstDir				=	Destination Directory for Source List - Ex: @ScriptDir
