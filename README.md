@@ -1,7 +1,5 @@
 # GitHub-Repo-Downloader-AutoIt
 
-NOTE: README.md Updates Pending...
-
 Tools to allow you to download a members complete repository list. Using AutoIt & Batch Files (Windows Only).
 
 Includes .au3 files for source functions 'GitHubRepos.au3' (Use as include) as well as GUI version 'GitHub_Repo_Builder-Public.au3'
