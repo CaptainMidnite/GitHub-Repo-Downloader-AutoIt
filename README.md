@@ -31,12 +31,13 @@ Detailed Descriptions:
  Release:			Public Release!
 
  Description:		GUI Version to Download a Members Complete Repository Set
-					Includes the Ability to Just Download and Create Batch File for Later Processing of Repositories
-					Or You Download, Create Batch File, and Download all Repositories
+			Includes the Ability to Just Download and Create Batch File for Later Processing of Repositories
+			Or You Download, Create Batch File, and Download all Repositories. Starting in V3.0: Included a new section in the GUI under the options menu for "Multiple Source Mode", use this if you need to grab all Repositories from multiple members at once. This process works similar to the Single Source Mode but you have to provide a approriately formatted ini file that contains the head address to the repo and the names of the projects that you want to have for them.
+		
 
  Functions:				
  					
- 					GetHub_Repo_Builder()
+ 					GetHub_Repo_Builder() - SSMode
 					Description: 	**GUI** Downloads a list of members repos and creates batch file to use to 	download them and excute this batch file
 									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
 									on the functions that are ran within the GUI please see next section below for details.
@@ -44,8 +45,49 @@ Detailed Descriptions:
 					$Project Name:			Name of project to be created will also use as part of directory name (i.e. Google_GitHub_Source)
 					$Destination:			Destination Directory where the project will be stored (i.e. C:\Users)
 					$Build Only:				Will only create the Project Directory and the inital batch file to download the repos for user to run later
-					$Build and Execute:		Will do the same as Build And will Start Running the Batch File after build is complete	
+					$Build and Execute:		Will do the same as Build And will Start Running the Batch File after build process is complete	
 					
+					GetHub_RepoBuilder() - MSMode
+					Description:	**GUI** Downloads multiple members or sources repos list and creates batch file to use to download them and execute this batch file 
+									if requested. The items below describe each of the input boxes and radio buttons available on the GUI, for info
+									on the functions that are ran within the GUI please see next section below for details.
+						
+					$INI File:			Full path to INI file containing the address to the source repos and a project name whcih to identify the repo (See examples below).
+					$Project Name:			Over All Project Name used to store all resulting batch files source lists and source repos once executed.
+					$Destination:			Full destination directory for all of the content above to be stored to.
+					$Build Only:				Will only create the Project Directory and the inital batch file to download the repos for user to run later
+					$Build and Execute:		Will do the same as Build And will Start Running the Batch Files after build process is complete
+					
+					$Example INI Files:
+					Basic INI Example:
+					[General]
+					head address=project name
+					https://github.com/angular=angular
+					https://github.com/antirez=antirez
+					...
+					----------------------------------------------------------------------------------------------
+					$Advanced INI File:
+					Additonaly you can also pass the settings in the ini file just create an additonal section in the ini called "settings" the settings
+					keys that it will accept are as follows:
+					prjName		=	Over All Project Name this is used to fill in the Project Name Field
+					dstDir		=	Destination directory that all of the batch files and source lists as well as the downloaded files will be stored in
+					buildOpt	=	This controls the mode radio buttons under step 4. Setting this to 1 will set the radio for Build Only setting this to
+									2 will set the radio for Build and Execute. Any other valure or blank will set clear all radio buttons.
+
+					Advanced INI Example:
+					[Settings]
+					prjName=MS_GitHub_All
+					dstDir=D:\AutoIt\GitHub_Repo_Builder\MS_GitHub_All
+					buildOpt=1
+
+					[General]
+					head address=project name
+					https://github.com/angular=angular
+					https://github.com/antirez=antirez
+					...
+					----------------------------------------------------------------------------------------------
+					
+					Also full example INI Files can be found in the folder 'Example_inis'
 ==========================================================================================================================================================
  Script Function:	GitHubRepos - V2.0
 
