@@ -1,54 +1,55 @@
-#cs ------------------------------------------------------------------------------------------------------------------------------------------------------
+#cs --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  AutoIt Version: 3.3.15.0 (Beta)
  Author:         CaptainMidnite
 
- Script Function:	GUI GitHub_Repo_Builder - v3.0
+ Script Function:	GUI GitHub_Repo_Builder - v3.1
 
  Release:			Public Release!
 
- Description:		GUI Version to Download a Members Complete Repository Set
-					Includes the Ability to Just Download and Create Batch File for Later Download or Create Batch File, and Download all Repositories
+ Description:	V3.0	GUI Version to Download a Members Complete Repository Set
+						Includes the Ability to Just Download and Create Batch File for Later Download or Create Batch File, and Download all Repositories
 
-					Included a new section in the GUI under the options menu for "Multiple Source Mode", use this if you need to grab all Repositories
-					from multiple members at once. This process works similar to the Single Source Mode but you have to provide a approriately formatted
-					ini file that contains the head address to the repo and the names of the projects that you want to have for them.
+						Included a new section in the GUI under the options menu for "Multiple Source Mode", use this if you need to grab all Repositories
+						from multiple members at once. This process works similar to the Single Source Mode but you have to provide a approriately formatted
+						ini file that contains the head address to the repo and the names of the projects that you want to have for them.
 
-					Basic INI Example:
-					[General]
-					head address=project name
-					https://github.com/angular=angular
-					https://github.com/antirez=antirez
-					...
-					=======================================================================================================================================
+						Basic INI Example:
+						[General]
+						head address=project name
+						https://github.com/angular=angular
+						https://github.com/antirez=antirez
+						...
+						=======================================================================================================================================
 
-					Additonaly you can also pass the settings in the ini file just create an additonal section in the ini called "settings" the settings
-					keys that it will accept are as follows:
-					prjName		=	Over All Project Name this is used to fill in the Project Name Field
-					dstDir		=	Destination directory that all of the batch files and source lists as well as the downloaded files will be stored in
-					buildOpt	=	This controls the mode radio buttons under step 4. Setting this to 1 will set the radio for Build Only setting this to
-									2 will set the radio for Build and Execute. Any other valure or blank will set clear all radio buttons.
+						Additonaly you can also pass the settings in the ini file just create an additonal section in the ini called "settings" the settings
+						keys that it will accept are as follows:
+						prjName		=	Over All Project Name this is used to fill in the Project Name Field
+						dstDir		=	Destination directory that all of the batch files and source lists as well as the downloaded files will be stored in
+						buildOpt	=	This controls the mode radio buttons under step 4. Setting this to 1 will set the radio for Build Only setting this to
+										2 will set the radio for Build and Execute. Any other valure or blank will set clear all radio buttons.
 
-					Advanced INI Example:
-					[Settings]
-					prjName=MS_GitHub_All
-					dstDir=D:\AutoIt\GitHub_Repo_Builder\MS_GitHub_All
-					buildOpt=1
+						Advanced INI Example:
+						[Settings]
+						prjName=MS_GitHub_All
+						dstDir=D:\AutoIt\GitHub_Repo_Builder\MS_GitHub_All
+						buildOpt=1
 
-					[General]
-					head address=project name
-					https://github.com/angular=angular
-					https://github.com/antirez=antirez
-					...
-					=======================================================================================================================================
+						[General]
+						head address=project name
+						https://github.com/angular=angular
+						https://github.com/antirez=antirez
+						...
+						=======================================================================================================================================
 
-					Also full example INI Files can be found in the folder 'Example_inis'
+						Also full example INI Files can be found in the folder 'Example_inis'
 
-#ce -------------------------------------------------------------------------------------------------------------------------------------------------------
+				V3.1	Added better error messages in the ini checking process to better inform the issue with the ini file.
+#ce --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; Script Start - Add your code below here
 ; Globals
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #include <MsgBoxConstants.au3>
 #include <Array.au3>
 #include <File.au3>
@@ -57,18 +58,18 @@
 #include <GUIConstantsEx.au3>
 #include <StaticConstants.au3>
 #include <WindowsConstants.au3>
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; Start GUI.
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 ConsoleWrite(@CRLF & "Start Script Execution"& @CRLF)
 Global $xLeft = 182
 Global $yTop = 121
 SSMode()
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; Functions
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Func GitSrcRepos($srcString, $DestDir, $ProjectName, $iNum = "", $tCount = "")
 ;Remove trailing slash if user entered
 If StringRight($DestDir, 1) = "\" Then
@@ -329,6 +330,12 @@ Func GitMultipleSrc($srcIni, $DestDir)
 	Local $oArray = ["0"]
 	;Read the SourceList ini file to $mArray
 	$mArray = IniReadSection($srcIni, "General")
+	$ckmArray = UBound($mArray, 2)
+	ConsoleWrite("$ckmArray = " & $ckmArray & @CRLF)
+	If $ckmArray < 2 Then
+		MsgBox($MB_OK, "Fatal Error", "There is an error in the config file, please consult the instructions and correct to continue!" & @CRLF & @CRLF & "Exiting Now...")
+		Exit
+	EndIf
 	;Remove trailing slash if user entered
 	If StringRight($DestDir, 1) = "\" Then
 		$DestDir = StringTrimRight($DestDir, 1)
@@ -350,8 +357,9 @@ Func GitMultipleSrc($srcIni, $DestDir)
 		EndIf
 	Next
 	$oUBound = UBound($oArray) - 1
-	_ArrayInsert($oArray, 0, $oUBound)
-	_ArrayDisplay($oArray)
+	;_ArrayInsert($oArray, 0, $oUBound)
+	$oArray[0] = $oUBound
+	;_ArrayDisplay($oArray)
 	Return $oArray
 EndFunc
 
@@ -378,10 +386,10 @@ Func SetWinPos($frmName)
 	$yTop = $wPos[1]
 EndFunc
 
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ; GUI Functions
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 Func SSMode()
 #Region ### START Koda GUI section ### Form=D:\AutoIt\GitHub_Repo_Builder\GitHub_Repo_Builder-SSMode.kxf
 $Form2 = GUICreate("GitHub Repo Builder - Single Source Mode", 543, 255, $xLeft, $yTop)
@@ -563,4 +571,4 @@ While 1
 WEnd
 EndFunc
 
-;----------------------------------------------------------------------------------------------------------------------------------------------------------
+;-----------------------------------------------------------------------------------------------------------------------------------------------------------------
