@@ -22,7 +22,7 @@ If you have any suggested changes or requests to add any additonal functionality
 
 Detailed Descriptions:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
- Script Function:	GUI GitHub_Repo_Builder - v2.0
+ Script Function:	GUI GitHub_Repo_Builder - v3.1
 
  File Name:			GitHub_Repo_Builder-Public.au3
  
@@ -87,7 +87,7 @@ Detailed Descriptions:
 					
 					Also full example INI Files can be found in the folder 'Example_inis'
 ==========================================================================================================================================================
- Script Function:	GitHubRepos - V2.0
+ Script Function:	GitHubRepos - V3.1
 
  File Name:			GitHubRepos.au3
  
